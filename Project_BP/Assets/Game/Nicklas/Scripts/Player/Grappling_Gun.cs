@@ -12,7 +12,7 @@ public class Grappling_Gun : MonoBehaviour
     [SerializeField] private int grappleLayerNumber = 0;
 
     [Header("Main Camera:")]
-    public Camera camera;
+    public Camera _camera;
 
     [Header("Transform Reference:")]
     public Transform gunHolder;
@@ -61,7 +61,7 @@ public class Grappling_Gun : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        RopeInputHandler();
     }
 
     void RopeInputHandler()
@@ -78,7 +78,7 @@ public class Grappling_Gun : MonoBehaviour
             }
             else
             {
-                Vector2 mousPos = camera.ScreenToWorldPoint(Input.mousePosition);
+                Vector2 mousPos = _camera.ScreenToWorldPoint(Input.mousePosition);
                 RotateGun(mousPos, true);
             }
             
@@ -101,21 +101,90 @@ public class Grappling_Gun : MonoBehaviour
         }
         else
         {
-            Vector2 mousePos = camera.ScreenToWorldPoint(Input.mousePosition);
+            Vector2 mousePos = _camera.ScreenToWorldPoint(Input.mousePosition);
             RotateGun(mousePos, true);
         }
     }
 
     void RotateGun(Vector3 lookPoint, bool allowRotationOverTime)
     {
+        Vector3 distanceVector = lookPoint - gunPivot.position;
 
+        float angle = Mathf.Atan2(distanceVector.y, distanceVector.x) * Mathf.Rad2Deg;
+        if(rotateOverTime && allowRotationOverTime)
+        {
+            gunPivot.rotation = Quaternion.Lerp(gunPivot.rotation, Quaternion.AngleAxis(angle, Vector3.forward), Time.deltaTime * rotationSpeed);
+        }
+        else
+        {
+            gunPivot.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        }
     }
     void SetGrapplePoint()
     {
-
+        Vector2 distanceVector = _camera.ScreenToWorldPoint(Input.mousePosition) - gunPivot.position;
+        if(Physics2D.Raycast(firePoint.position, distanceVector.normalized))
+        {
+            RaycastHit2D hit = Physics2D.Raycast(firePoint.position, distanceVector.normalized);
+            {
+                if(hit.transform.gameObject.layer == grappleLayerNumber || grappleToAll)
+                {
+                    if(Vector2.Distance(hit.point, firePoint.position) <= maxDistance || !hasMaxDistance)
+                    {
+                        grapplePoint = hit.point;
+                        grappleDistanceVector = grapplePoint - (Vector2)gunPivot.position;
+                        grappleRope.enabled = true;
+                    }
+                }
+            }
+        }
     }
     public void Grapple()
     {
+        springJoint2D.autoConfigureDistance = false;
+        if(!launchToPoint && !autoConfigureDistance)
+        {
+            springJoint2D.distance = targetDistance;
+            springJoint2D.frequency = targetFrequency;
+        }
+        if(!launchToPoint)
+        {
+            if(autoConfigureDistance)
+            {
+                springJoint2D.autoConfigureDistance = true;
+                springJoint2D.frequency = 0;
+            }
 
+            springJoint2D.connectedAnchor = grapplePoint;
+            springJoint2D.enabled = true;
+        }
+        else
+        {
+            switch(launchType)
+            {
+                case LaunchType.Physics_Launch:
+                    springJoint2D.connectedAnchor = grapplePoint;
+
+                    Vector2 distanceVector = firePoint.position - gunHolder.position;
+
+                    springJoint2D.distance = distanceVector.magnitude;
+                    springJoint2D.frequency = launchSpeed;
+                    springJoint2D.enabled = true;
+                    break;
+                case LaunchType.Transform_Launch:
+                    rb.gravityScale = 0;
+                    rb.velocity = Vector2.zero;
+                    break;
+            }
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        if(firePoint != null && hasMaxDistance)
+        {
+            Gizmos.color = Color.green;
+            Gizmos.DrawWireSphere(firePoint.position, maxDistance);
+        }
     }
 }

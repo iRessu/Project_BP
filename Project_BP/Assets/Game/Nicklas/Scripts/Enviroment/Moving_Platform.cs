@@ -45,4 +45,27 @@ public class Moving_Platform : MonoBehaviour
 
         return _waypoints[_currentWaypointIndex];
     }
+
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        var playerMovement = other.collider.GetComponent<Movement_Test>();
+        var backpack = other.collider.GetComponent<Backpack_Script>();
+        if(playerMovement != null || backpack != null)
+        {
+            playerMovement.SetParent(transform);
+            backpack.BackPackSetParent(transform);
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D other)
+    {
+        var playerMovement = other.collider.GetComponent<Movement_Test>();
+        var backpack = other.collider.GetComponent<Backpack_Script>();
+        if(playerMovement != null || backpack != null)
+        {
+            playerMovement.ResetParent();
+            backpack.BackPackResetParent();
+        }
+    }
 }

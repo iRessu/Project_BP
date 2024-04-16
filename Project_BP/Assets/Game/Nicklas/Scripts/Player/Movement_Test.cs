@@ -30,6 +30,7 @@ public class Movement_Test : MonoBehaviour, IPlayerController
        _rb = GetComponent<Rigidbody2D>();
        _col = GetComponent<CapsuleCollider2D>();
        _anim = GetComponent<Animator>();
+        _originalParent = transform.parent;
 
         _cachedQueryStartInColliders = Physics2D.queriesStartInColliders;
     }
@@ -227,6 +228,21 @@ public class Movement_Test : MonoBehaviour, IPlayerController
         _currentAnimation = newState;
     }
 
+    #endregion
+
+    #region Parent
+    private Transform _originalParent;
+
+    public void SetParent(Transform newParent)
+    {
+        _originalParent = transform.parent;
+        transform.parent = newParent;
+    }
+
+    public void ResetParent()
+    {
+        transform.parent = null;
+    }
     #endregion
 
 

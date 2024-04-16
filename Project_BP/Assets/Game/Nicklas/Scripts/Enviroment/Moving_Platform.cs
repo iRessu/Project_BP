@@ -25,8 +25,6 @@ public class Moving_Platform : MonoBehaviour
             _targetWaypoint.position,
             _speed * Time.deltaTime);
 
-        float distanceToWaypoint = Vector2.Distance(transform.position, _targetWaypoint.position);
-        Debug.Log("Distance to waypoint: " + distanceToWaypoint);
         if(Vector2.Distance(transform.position, _targetWaypoint.position) < _checkDistance)
         {
             _targetWaypoint = GetNextWaypoint();
@@ -51,9 +49,13 @@ public class Moving_Platform : MonoBehaviour
     {
         var playerMovement = other.collider.GetComponent<Movement_Test>();
         var backpack = other.collider.GetComponent<Backpack_Script>();
-        if(playerMovement != null || backpack != null)
+        if(playerMovement != null && other.collider.CompareTag("Player"))
         {
-            playerMovement.SetParent(transform);
+            playerMovement.SetParent(transform);        
+        }
+
+        if (backpack != null && other.collider.CompareTag("Backpack"))
+        {
             backpack.BackPackSetParent(transform);
         }
     }
@@ -62,9 +64,12 @@ public class Moving_Platform : MonoBehaviour
     {
         var playerMovement = other.collider.GetComponent<Movement_Test>();
         var backpack = other.collider.GetComponent<Backpack_Script>();
-        if(playerMovement != null || backpack != null)
+        if(playerMovement != null && other.collider.CompareTag("Player"))
         {
             playerMovement.ResetParent();
+        }
+        if (backpack != null && other.collider.CompareTag("Backpack"))
+        {
             backpack.BackPackResetParent();
         }
     }

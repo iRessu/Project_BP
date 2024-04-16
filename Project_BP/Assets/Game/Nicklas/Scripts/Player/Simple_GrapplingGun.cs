@@ -7,7 +7,7 @@ public class Simple_GrapplingGun : MonoBehaviour
     public Camera mainCamera;
     public LineRenderer _linerenderer;
     public Rigidbody2D _rigidbody;
-    Player_Movement playerMovement;
+    Movement_Test playerMovement;
 
     public float pullSpeed = 5f;
     public LayerMask grappleLayer;
@@ -15,10 +15,15 @@ public class Simple_GrapplingGun : MonoBehaviour
     private bool isGrappling = false;
     private float distanceToGrapplePoint;
 
+    public GameObject prefabToSpawn;
+    private GameObject spawnedObject;
+    public Transform spawnPoint;
+    public float removalRange = 2f;
+
     // Start is called before the first frame update
     void Start()
     {
-         playerMovement = FindObjectOfType<Player_Movement>();
+         playerMovement = FindObjectOfType<Movement_Test>();
        
     }
 
@@ -36,6 +41,22 @@ public class Simple_GrapplingGun : MonoBehaviour
         if(isGrappling)
         {
             PullPlayer();
+        }
+
+        if(Input.GetKeyDown(KeyCode.F))
+            
+            {
+            if(spawnedObject == null)
+            {
+                SpawnObject();
+            }
+            else
+            {
+                if(IsPlayerInRange())
+                {
+                    RemoveObject();
+                }
+            }
         }
     }
 
@@ -78,6 +99,27 @@ public class Simple_GrapplingGun : MonoBehaviour
             isGrappling = false;
             StopGrapple();
         }
+    }
+
+    void SpawnObject()
+    {
+        spawnedObject = Instantiate(prefabToSpawn, spawnPoint.position, Quaternion.identity);
+    }
+
+    void RemoveObject()
+    {
+        Destroy(spawnedObject);
+        spawnedObject = null;
+    }
+
+    bool IsPlayerInRange()
+    {
+        if(spawnedObject != null)
+        {
+            float distance = Vector3.Distance(transform.position, spawnedObject.transform.position);
+            return distance <= removalRange;
+        }
+        return false;
     }
 }
 

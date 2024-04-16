@@ -15,7 +15,7 @@ MonoBehaviour:
   PlayerLayer:
     serializedVersion: 2
     m_Bits: 128
-  SnapInput: 0
+  SnapInput: 1
   VerticalDeadZoneThresold: 0.3
   HorizontalDeadZoneThreshold: 0.1
   MaxSpeed: 14

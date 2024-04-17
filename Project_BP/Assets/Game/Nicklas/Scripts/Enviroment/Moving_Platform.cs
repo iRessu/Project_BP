@@ -73,4 +73,20 @@ public class Moving_Platform : MonoBehaviour
             backpack.BackPackResetParent();
         }
     }
+
+    public void MoveToNextWaypoint()
+    {
+        _targetWaypoint = GetNextWaypoint();
+    }
+
+    public void MoveBackToStart()
+    {
+        _currentWaypointIndex = 0;
+        _targetWaypoint = _waypoints[_currentWaypointIndex];
+    }
+
+    public bool IsMoving()
+    {
+        return Vector2.Distance(transform.position, _targetWaypoint.position) > _checkDistance;
+    }
 }

@@ -22,4 +22,5 @@ public class Backpack_Script : MonoBehaviour
     {
         transform.parent = null;
     }
+
 }

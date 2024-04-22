@@ -1,15 +1,19 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Moving_Platform : MonoBehaviour
 {
-    [SerializeField] private Transform[] _waypoints;
+    [SerializeField] public Transform[] _waypoints;
     [SerializeField] private float _speed;
-    [SerializeField] private float _checkDistance = 0.05f;
+    [SerializeField] public float _checkDistance = 0.05f;
+    [NonSerialized] public int _currentWaypointIndex = 0;
+
 
     private Transform _targetWaypoint;
-    private int _currentWaypointIndex = 0;
+    public bool isMoving;
+   
 
     // Start is called before the first frame update
     void Start()
@@ -20,10 +24,14 @@ public class Moving_Platform : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = Vector2.MoveTowards(
-            transform.position,
-            _targetWaypoint.position,
-            _speed * Time.deltaTime);
+        if(isMoving)
+        {
+            transform.position = Vector2.MoveTowards(
+                   transform.position,
+                   _targetWaypoint.position,
+                   _speed * Time.deltaTime);
+        }
+   
 
         if(Vector2.Distance(transform.position, _targetWaypoint.position) < _checkDistance)
         {
@@ -74,19 +82,13 @@ public class Moving_Platform : MonoBehaviour
         }
     }
 
-    public void MoveToNextWaypoint()
+    public void StartMoving()
     {
-        _targetWaypoint = GetNextWaypoint();
+        isMoving = true;
     }
 
-    public void MoveBackToStart()
+    public void StopMoving()
     {
-        _currentWaypointIndex = 0;
-        _targetWaypoint = _waypoints[_currentWaypointIndex];
-    }
-
-    public bool IsMoving()
-    {
-        return Vector2.Distance(transform.position, _targetWaypoint.position) > _checkDistance;
+        isMoving = false;
     }
 }

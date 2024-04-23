@@ -8,9 +8,10 @@ public class Moving_Platform : MonoBehaviour
     [SerializeField] public Transform[] _waypoints;
     [SerializeField] private float _speed;
     [SerializeField] public float _checkDistance = 0.05f;
-    [NonSerialized] public int _currentWaypointIndex = 0;
 
 
+ 
+    private int _currentWaypointIndex = 0;
     private Transform _targetWaypoint;
     public bool isMoving;
    
@@ -35,13 +36,19 @@ public class Moving_Platform : MonoBehaviour
 
         if(Vector2.Distance(transform.position, _targetWaypoint.position) < _checkDistance)
         {
-            _targetWaypoint = GetNextWaypoint();
+            _currentWaypointIndex =(_currentWaypointIndex +1) % _waypoints.Length;
+            _targetWaypoint= _waypoints[_currentWaypointIndex];
         }
     }
 
 
+    public void SetWaypointIndex(int index)
+    {
+        _currentWaypointIndex = index;
+        _targetWaypoint = _waypoints[_currentWaypointIndex];
+    }
 
-    private Transform GetNextWaypoint()
+  /* private Transform GetNextWaypoint()
     {
         _currentWaypointIndex++;
         if(_currentWaypointIndex >= _waypoints.Length )
@@ -50,7 +57,7 @@ public class Moving_Platform : MonoBehaviour
         }
 
         return _waypoints[_currentWaypointIndex];
-    }
+    }*/
 
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -91,4 +98,6 @@ public class Moving_Platform : MonoBehaviour
     {
         isMoving = false;
     }
+
+    public int CurrentWaypointIndex => _currentWaypointIndex;
 }

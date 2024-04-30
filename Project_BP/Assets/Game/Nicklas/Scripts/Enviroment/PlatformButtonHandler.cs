@@ -77,8 +77,6 @@ public class PlatformButtonHandler : MonoBehaviour
                 if(currentWaypointIndex == 0)
                 {
                     platform.StopMoving();
-                    yield return new WaitForSeconds(delayTime);
-                    platform.StartMoving();
                 }
             }
         }

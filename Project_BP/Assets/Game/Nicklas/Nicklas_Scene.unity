@@ -1638,7 +1638,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   platform: {fileID: 1606554079}
-  delayTime: 5
+  delayTime: 2
   waitAtWaypointIndex: 1
 --- !u!1 &1120610942
 GameObject:
@@ -2446,7 +2446,7 @@ MonoBehaviour:
   _waypoints:
   - {fileID: 54728703}
   - {fileID: 685457718}
-  _speed: 3
+  _speed: 5
   _checkDistance: 0.05
   isMoving: 0
 --- !u!251 &1606554080

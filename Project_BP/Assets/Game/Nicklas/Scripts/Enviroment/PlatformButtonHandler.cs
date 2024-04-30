@@ -41,7 +41,7 @@ public class PlatformButtonHandler : MonoBehaviour
 
         int currentWaypointIndex = platform.CurrentWaypointIndex;
 
-        while(true)
+        while (true)
         {
             if(movingForward)
             {
@@ -50,15 +50,6 @@ public class PlatformButtonHandler : MonoBehaviour
                 {
                     currentWaypointIndex = platform._waypoints.Length - 1;
                     movingForward = false;
-                }
-                platform.SetWaypointIndex(currentWaypointIndex);
-                yield return new WaitUntil(() => Vector2.Distance(platform.transform.position,
-                    platform._waypoints[currentWaypointIndex].position) < platform._checkDistance);
-
-                if(currentWaypointIndex == waitAtWaypointIndex)
-                {
-                    platform.StopMoving();
-                    yield return new WaitUntil(() => !movingForward);
                 }
             }
             else
@@ -69,14 +60,17 @@ public class PlatformButtonHandler : MonoBehaviour
                     currentWaypointIndex = 0;
                     movingForward = true;
                 }
-                platform.SetWaypointIndex(currentWaypointIndex);
-                yield return new WaitUntil(() => Vector2.Distance(platform.transform.position,
-                    platform._waypoints[currentWaypointIndex].position) < platform._checkDistance);
+            }
+            platform.SetWaypointIndex(currentWaypointIndex);
+            yield return new WaitUntil(() => Vector2.Distance(platform.transform.position,
+                platform._waypoints[currentWaypointIndex].position) < platform._checkDistance);
 
-                if(currentWaypointIndex == 0)
-                {
-                    platform.StopMoving();
-                }
+            if ((movingForward && currentWaypointIndex == waitAtWaypointIndex) ||
+                (!movingForward && currentWaypointIndex == 0))
+            {
+                platform.StopMoving();
+                yield return new WaitUntil(() => canMove);
+                platform.StartMoving();
             }
         }
 

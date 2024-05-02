@@ -7,13 +7,12 @@ public class PlatformButtonHandler : MonoBehaviour
 {
     public Moving_Platform platform;
     public float delayTime = 2f;
-    public bool canMove = true;
-    private bool movingForward = true;
+    private bool isMoving = false;
     private Coroutine movementCoroutine;
     public int waitAtWaypointIndex = 1;
 
 
-    public void MovePlatform()
+    public void StartPlatform()
     {
         platform.StartMoving();
     }
@@ -23,63 +22,56 @@ public class PlatformButtonHandler : MonoBehaviour
         platform.StopMoving();
     }
 
-    public void ActivatePlatform()
+    public void TogglePlatformMovement()
     {
-        if (canMove)
+        if(!isMoving)
         {
-            canMove = false;
-            if (movementCoroutine != null)
-                StopCoroutine(movementCoroutine);
-            movementCoroutine = StartCoroutine(StartPlatform());
+            movementCoroutine = StartCoroutine(MovePlatform());
+            isMoving = true;
+        }
+        else
+        {
+            StopCoroutine(movementCoroutine);
+            platform.StopMoving();
+            platform.SetWaypointIndex(0);
+            isMoving = false;
         }
     }
 
 
-    public IEnumerator StartPlatform()
+    private IEnumerator MovePlatform()
     {
         platform.StartMoving();
 
-        int currentWaypointIndex = platform.CurrentWaypointIndex;
-
-        while (true)
+        while(Vector2.Distance(platform.transform.position, platform._waypoints[1].position) > platform._checkDistance)
         {
-            if (movingForward)
-            {
-                currentWaypointIndex++;
-                if (currentWaypointIndex >= platform._waypoints.Length)
-                {
-                    currentWaypointIndex = platform._waypoints.Length - 1;
-                    movingForward = false;
-                }
-                platform.SetWaypointIndex(currentWaypointIndex);
-                yield return new WaitUntil(() => Vector2.Distance(platform.transform.position,
-                    platform._waypoints[currentWaypointIndex].position) < platform._checkDistance);
-
-                if (currentWaypointIndex == waitAtWaypointIndex)
-                {
-                    platform.StopMoving();
-                    yield return new WaitForSeconds(delayTime);
-                    platform.StartMoving();
-                }
-            }
-            else
-            {
-                currentWaypointIndex--;
-                if(currentWaypointIndex < 0)
-                {
-                    currentWaypointIndex = 0;
-                    movingForward = true;
-                    platform.StopMoving();
-                    yield return new WaitUntil(() => canMove);
-                    platform.StartMoving();
-                }
-                else
-                {
-                    platform.SetWaypointIndex(currentWaypointIndex);
-                    yield return new WaitUntil(() => Vector2.Distance(platform.transform.position,
-                        platform._waypoints[currentWaypointIndex].position) < platform._checkDistance);
-                }
-            }
+            yield return null;
         }
+
+        platform.StopMoving();
+
+        yield return new WaitForSeconds(delayTime);
+
+        platform.StartMoving();
+        platform.SetWaypointIndex(0);
+
+        while (Vector2.Distance(platform.transform.position, platform._waypoints[0].position) > platform._checkDistance)
+        {
+            yield return null;
+        }
+
+        platform.StopMoving();
+        isMoving = false;
+    }
+
+    private IEnumerator MoveToNextWaypoint()
+    {
+        int currentWaypointIndex = platform.CurrentWaypointIndex;
+        int nextWaypointIndex = (currentWaypointIndex + 1) % platform._waypoints.Length;
+
+        platform.SetWaypointIndex(currentWaypointIndex);
+
+        yield return new WaitUntil(() => Vector2.Distance(platform.transform.position,
+            platform._waypoints[nextWaypointIndex].position) < platform._checkDistance);
     }
 }

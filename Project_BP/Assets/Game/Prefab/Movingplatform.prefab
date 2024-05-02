@@ -126,10 +126,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _waypoints:
-  - {fileID: 5135046693958201797}
   - {fileID: 5135046693547697932}
+  - {fileID: 5135046693958201797}
   _speed: 3
   _checkDistance: 0.05
+  isMoving: 0
 --- !u!251 &5135046692825806810
 PlatformEffector2D:
   m_ObjectHideFlags: 0
@@ -158,6 +159,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5135046692865135545}
+  - component: {fileID: 6290961127108249494}
   m_Layer: 0
   m_Name: Movingplatform
   m_TagString: Untagged
@@ -178,11 +180,26 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5135046692825806820}
-  - {fileID: 5135046693958201797}
   - {fileID: 5135046693547697932}
+  - {fileID: 5135046693958201797}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6290961127108249494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5135046692865135544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52a4ac8d05ebfce4ba5f148d062010cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  platform: {fileID: 0}
+  delayTime: 2
+  waitAtWaypointIndex: 1
 --- !u!1 &5135046693547697935
 GameObject:
   m_ObjectHideFlags: 0
@@ -193,7 +210,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5135046693547697932}
   m_Layer: 0
-  m_Name: Waypoint
+  m_Name: Waypoint0
   m_TagString: Untagged
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -212,7 +229,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5135046692865135545}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5135046693958201796
 GameObject:
@@ -224,7 +241,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5135046693958201797}
   m_Layer: 0
-  m_Name: Waypoint
+  m_Name: Waypoint1
   m_TagString: Untagged
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -243,5 +260,5 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5135046692865135545}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

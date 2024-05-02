@@ -10,7 +10,7 @@ public class Button_Controller : MonoBehaviour
     {
         if(other.CompareTag("Player"))
         {
-            platformButtonHandler.canMove = true;
+           // platformButtonHandler.canMove = true;
         }
     }
 }

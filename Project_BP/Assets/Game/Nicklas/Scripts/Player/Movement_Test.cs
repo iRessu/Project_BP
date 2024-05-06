@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 [RequireComponent(typeof(Rigidbody2D), typeof(Collider2D))]
 public class Movement_Test : MonoBehaviour, IPlayerController
 {
@@ -41,6 +42,7 @@ public class Movement_Test : MonoBehaviour, IPlayerController
         _time += Time.deltaTime;
         GatherInput();
         HandleAnimation();
+        HandleSoundInput();
         Flip();
     }
 
@@ -245,6 +247,20 @@ public class Movement_Test : MonoBehaviour, IPlayerController
     }
     #endregion
 
+    #region Sounds
+    private void HandleSoundInput()
+    {
+
+        if(_grounded)
+        {
+            if (Input.GetButton("Jump"))
+            {
+                FindObjectOfType<AudioManager>().PlaySound("Jump", UnityEngine.Random.Range(0, 4));
+            }
+        }
+      
+    }
+    #endregion
 
     private void ApplyMovement() => _rb.velocity = _frameVelocity;
 

@@ -5,12 +5,12 @@ using UnityEngine;
 
 
 [RequireComponent(typeof(Rigidbody2D), typeof(Collider2D))]
-public class Movement_Test : MonoBehaviour, IPlayerController
+public class Movement_Test : MonoBehaviour, IPlayerControllerTest
 {
     [SerializeField] private ScriptableStats _stats;
     private Rigidbody2D _rb;
     private CapsuleCollider2D _col;
-    private FrameInput _frameInput;
+    private FrameInput1 _frameInput;
     private Vector2 _frameVelocity;
     private bool _cachedQueryStartInColliders;
 
@@ -41,14 +41,14 @@ public class Movement_Test : MonoBehaviour, IPlayerController
     {
         _time += Time.deltaTime;
         GatherInput();
-        HandleAnimation();
+        //HandleAnimation();
         HandleSoundInput();
         Flip();
     }
 
     private void GatherInput()
     {
-        _frameInput = new FrameInput
+        _frameInput = new FrameInput1
         {
             JumpDown = Input.GetButtonDown("Jump"),
             JumpHeld = Input.GetButton("Jump"),
@@ -187,7 +187,7 @@ public class Movement_Test : MonoBehaviour, IPlayerController
     private Animator _anim;
     private bool _isFacingRight;
 
-    const string PLAYER_IDLE = "Player_IdleAN";
+    /*const string PLAYER_IDLE = "Player_IdleAN";
     const string PLAYER_WALK = "Player_WalkAN";
     const string PLAYER_JUMP = "Player_JumpAN";
 
@@ -210,7 +210,7 @@ public class Movement_Test : MonoBehaviour, IPlayerController
             ChangeAnimationState(PLAYER_JUMP);
         }
     }
-
+    */
     private void Flip()
     {
         if(_isFacingRight && _frameInput.Move.x > 0 || !_isFacingRight && _frameInput.Move.x < 0)
@@ -272,14 +272,14 @@ public class Movement_Test : MonoBehaviour, IPlayerController
     }
     #endif
 }
-public struct FrameInput
+public struct FrameInput1
 {
     public bool JumpDown;
     public bool JumpHeld;
     public Vector2 Move;
 }
 
-public interface IPlayerController
+public interface IPlayerControllerTest
 {
     public event Action<bool, float> GroundedChanged;
 

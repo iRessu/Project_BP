@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TarodevController;
 using UnityEngine;
 
 public class Moving_Platform : MonoBehaviour
@@ -62,7 +63,7 @@ public class Moving_Platform : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        var playerMovement = other.collider.GetComponent<Movement_Test>();
+        var playerMovement = other.collider.GetComponent<PlayerController>();
         var backpack = other.collider.GetComponent<Backpack_Script>();
         if(playerMovement != null && other.collider.CompareTag("Player"))
         {
@@ -77,7 +78,7 @@ public class Moving_Platform : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D other)
     {
-        var playerMovement = other.collider.GetComponent<Movement_Test>();
+        var playerMovement = other.collider.GetComponent<PlayerController>();
         var backpack = other.collider.GetComponent<Backpack_Script>();
         if(playerMovement != null && other.collider.CompareTag("Player"))
         {

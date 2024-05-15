@@ -28,6 +28,7 @@ public class Grappler : MonoBehaviour
                 direction: Vector2.zero,
                 distance: Mathf.Infinity,
                 layerMask: grappleLayer);
+          
 
             if(hit.collider != null)
             {
@@ -39,6 +40,7 @@ public class Grappler : MonoBehaviour
                 rope.SetPosition(0, grapplePoint);
                 rope.SetPosition(1, transform.position);
                 rope.enabled = true;
+                FindObjectOfType<AudioManager>().PlaySound("Hook");
             }
         }
 

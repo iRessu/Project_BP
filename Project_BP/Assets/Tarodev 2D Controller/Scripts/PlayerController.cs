@@ -926,7 +926,7 @@ namespace TarodevController
             {
                 if (_playerInput.Gather().JumpDown)
                 {
-                    FindObjectOfType<AudioManager>().PlaySound("Jump", UnityEngine.Random.Range(0, 4));
+                    FindObjectOfType<AudioManager>().PlayRandomSound("Jump", UnityEngine.Random.Range(0, 4));
                 }
             }
          

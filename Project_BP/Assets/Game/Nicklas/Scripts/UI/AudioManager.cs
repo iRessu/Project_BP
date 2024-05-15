@@ -30,7 +30,7 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    public void PlaySound(string name, int variation)
+    public void PlayRandomSound(string name, int variation)
     {
         Sound[] selectedSounds = Array.FindAll(sounds, sound => sound.name == name);
 
@@ -47,5 +47,17 @@ public class AudioManager : MonoBehaviour
         }
 
         selectedSounds[variation].source.Play();
+    }
+
+    public void PlaySound(string name)
+    {
+        Sound s = Array.Find(sounds, sound => sound.name == name);
+        
+        if(s == null)
+        {
+            Debug.Log("Sound: " + name + " not found!");
+            return;
+        }
+        s.source.Play();
     }
 }

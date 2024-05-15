@@ -255,7 +255,7 @@ public class Movement_Test : MonoBehaviour, IPlayerControllerTest
         {
             if (Input.GetButton("Jump"))
             {
-                FindObjectOfType<AudioManager>().PlaySound("Jump", UnityEngine.Random.Range(0, 4));
+                FindObjectOfType<AudioManager>().PlayRandomSound("Jump", UnityEngine.Random.Range(0, 4));
             }
         }
       

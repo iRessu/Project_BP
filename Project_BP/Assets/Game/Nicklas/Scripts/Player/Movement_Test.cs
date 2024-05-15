@@ -235,13 +235,13 @@ public class Movement_Test : MonoBehaviour, IPlayerControllerTest
     #region Parent
     private Transform _originalParent;
 
-    public void SetParent(Transform newParent)
+    public void SetParentOld(Transform newParent)
     {
         _originalParent = transform.parent;
         transform.parent = newParent;
     }
 
-    public void ResetParent()
+    public void ResetParentOld()
     {
         transform.parent = null;
     }

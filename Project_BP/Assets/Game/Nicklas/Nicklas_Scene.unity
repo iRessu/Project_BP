@@ -1183,6 +1183,12 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
+  - name: Hook
+    clip: {fileID: 8300000, guid: 014e374a78ae68b43b92cbf2542137fa, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
 --- !u!4 &717394514
 Transform:
   m_ObjectHideFlags: 0

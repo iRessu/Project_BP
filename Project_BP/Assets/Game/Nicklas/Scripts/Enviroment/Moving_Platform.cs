@@ -63,12 +63,19 @@ public class Moving_Platform : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        var playerMovement = other.collider.GetComponent<PlayerController>();
-        var backpack = other.collider.GetComponent<Backpack_Script>();
-        if(playerMovement != null && other.collider.CompareTag("Player"))
+        
+        if(other.gameObject.layer == LayerMask.NameToLayer("MovingPlatform"))
         {
-            playerMovement.SetParent(transform);        
+            var playerMovement = other.collider.GetComponent<PlayerController>();
+            if (playerMovement != null && other.collider.CompareTag("Player"))
+            {
+                playerMovement.SetParent(transform);
+            }
         }
+       
+        var backpack = other.collider.GetComponent<Backpack_Script>();
+        
+      
 
         if (backpack != null && other.collider.CompareTag("Backpack"))
         {
@@ -78,12 +85,18 @@ public class Moving_Platform : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D other)
     {
-        var playerMovement = other.collider.GetComponent<PlayerController>();
-        var backpack = other.collider.GetComponent<Backpack_Script>();
-        if(playerMovement != null && other.collider.CompareTag("Player"))
+        if(other.gameObject.layer == LayerMask.NameToLayer("MovingPlatform"))
         {
-            playerMovement.ResetParent();
+            var playerMovement = other.collider.GetComponent<PlayerController>();
+            if (playerMovement != null && other.collider.CompareTag("Player"))
+            {
+                playerMovement.ResetParent();
+            }
         }
+       
+        var backpack = other.collider.GetComponent<Backpack_Script>();
+       
+      
         if (backpack != null && other.collider.CompareTag("Backpack"))
         {
             backpack.BackPackResetParent();

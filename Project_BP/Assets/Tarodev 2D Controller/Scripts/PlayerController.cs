@@ -85,6 +85,7 @@ namespace TarodevController
 
             SetupCharacter();
             _anim = GetComponent<Animator>();
+            _originalParent = transform.parent;
 
             PhysicsSimulator.Instance.AddPlayer(this);
         }

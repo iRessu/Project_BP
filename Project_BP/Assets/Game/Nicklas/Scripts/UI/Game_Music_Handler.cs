@@ -7,12 +7,8 @@ public class Game_Music_Handler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        FindObjectOfType<AudioManager>().PlaySound("Bana1");
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
 }

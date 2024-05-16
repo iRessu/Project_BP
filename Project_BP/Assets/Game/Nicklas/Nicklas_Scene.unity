@@ -2934,9 +2934,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5135046692825806817, guid: bb39f26d89f04984a930fd20e2ec9fdd, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5135046692865135544, guid: bb39f26d89f04984a930fd20e2ec9fdd, type: 3}
       propertyPath: m_Name
       value: Movingplatform (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5135046692865135544, guid: bb39f26d89f04984a930fd20e2ec9fdd, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5135046692865135545, guid: bb39f26d89f04984a930fd20e2ec9fdd, type: 3}
       propertyPath: m_RootOrder
@@ -4876,6 +4884,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1740869168832874247, guid: 2ac70fdbc99c8e14180dec8a2eaecd68, type: 3}
+      propertyPath: m_Size.y
+      value: 1.676508
+      objectReference: {fileID: 0}
+    - target: {fileID: 1740869168832874247, guid: 2ac70fdbc99c8e14180dec8a2eaecd68, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.8317461
+      objectReference: {fileID: 0}
     - target: {fileID: 1740869168832874251, guid: 2ac70fdbc99c8e14180dec8a2eaecd68, type: 3}
       propertyPath: m_RootOrder
       value: 7

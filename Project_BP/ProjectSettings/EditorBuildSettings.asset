@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Game/Emilia/Emilia_Scene.unity
     guid: 77a85d11954089d4faff5bf56362b4d8
+  - enabled: 1
+    path: Assets/Game/Final Game/Level One.unity
+    guid: 212f1145b8f4e9d47b5039cc2f62d21d
   m_configObjects: {}

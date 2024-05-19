@@ -27,10 +27,10 @@ MonoBehaviour:
   VerticalDeadZoneThreshold: 0.3
   HorizontalDeadZoneThreshold: 0.1
   PositionCorrectionMode: 0
-  BaseSpeed: 15
-  Acceleration: 100
-  Friction: 70
-  AirFrictionMultiplier: 0.5
+  BaseSpeed: 11.5
+  Acceleration: 90
+  Friction: 75
+  AirFrictionMultiplier: 0.62
   DirectionCorrectionMultiplier: 3
   MaxWalkableSlope: 46
   ExtraConstantGravity: 40
@@ -50,7 +50,7 @@ MonoBehaviour:
   AllowWalls: 0
   ClimbableLayer:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 1
   WallJumpTotalInputLossTime: 0.2
   WallJumpInputLossReturnTime: 0.5
   RequireInputPush: 0

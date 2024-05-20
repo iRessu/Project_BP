@@ -2811,7 +2811,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animationController: {fileID: 2072386008}
-  sceneToLoad: Nicklas_Scene
+  sceneToLoad: Emilia_Scene
 --- !u!1 &1921516190
 GameObject:
   m_ObjectHideFlags: 0

@@ -29,8 +29,8 @@ MonoBehaviour:
   PositionCorrectionMode: 0
   BaseSpeed: 11.5
   Acceleration: 90
-  Friction: 75
-  AirFrictionMultiplier: 0.62
+  Friction: 68
+  AirFrictionMultiplier: 0.5
   DirectionCorrectionMultiplier: 3
   MaxWalkableSlope: 46
   ExtraConstantGravity: 40
@@ -50,7 +50,7 @@ MonoBehaviour:
   AllowWalls: 0
   ClimbableLayer:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 256
   WallJumpTotalInputLossTime: 0.2
   WallJumpInputLossReturnTime: 0.5
   RequireInputPush: 0

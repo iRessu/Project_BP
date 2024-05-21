@@ -13,13 +13,15 @@ public class Coin_Collect : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.GetType().ToString().Equals("UnityEngine.BoxCollider2D"))
-        {
+       
             if (other.gameObject.CompareTag("Coin"))
             {
+               if (other.GetComponent<BoxCollider2D>() != null)
+               {
                 Destroy(other.gameObject);
                 cm.coinCount++;
+               }
             }
-        }
+        
     }
 }

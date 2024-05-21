@@ -27,16 +27,16 @@ MonoBehaviour:
   VerticalDeadZoneThreshold: 0.3
   HorizontalDeadZoneThreshold: 0.1
   PositionCorrectionMode: 0
-  BaseSpeed: 10
-  Acceleration: 70
-  Friction: 75
-  AirFrictionMultiplier: 100
-  DirectionCorrectionMultiplier: 25
+  BaseSpeed: 11.5
+  Acceleration: 90
+  Friction: 68
+  AirFrictionMultiplier: 0.5
+  DirectionCorrectionMultiplier: 3
   MaxWalkableSlope: 46
-  ExtraConstantGravity: 60
+  ExtraConstantGravity: 40
   BufferedJumpTime: 0.15
   CoyoteTime: 0.15
-  JumpPower: 19
+  JumpPower: 20
   EndJumpEarlyExtraForceMultiplier: 3
   MaxAirJumps: 0
   AllowDash: 0

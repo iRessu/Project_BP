@@ -85,7 +85,7 @@ public class Moving_Platform : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D other)
     {
-        if(other.gameObject.layer == LayerMask.NameToLayer("MovingPlatform"))
+        if (other.GetType().ToString().Equals("UnityEngine.CapsuleCollider2D") && other.gameObject.layer == LayerMask.NameToLayer("MovingPlatform"))
         {
             var playerMovement = other.collider.GetComponent<PlayerController>();
             if (playerMovement != null && other.collider.CompareTag("Player"))

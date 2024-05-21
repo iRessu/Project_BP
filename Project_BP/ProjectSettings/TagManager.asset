@@ -18,7 +18,7 @@ TagManager:
   - "Gr\xE4s"
   - Ladder
   - MovingPlatform
-  - 
+  - SimontestForeground
   - 
   - 
   - 
@@ -42,4 +42,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Foreground
+    uniqueID: 1284443379
+    locked: 0
+  - name: Background
+    uniqueID: 2609736295
     locked: 0

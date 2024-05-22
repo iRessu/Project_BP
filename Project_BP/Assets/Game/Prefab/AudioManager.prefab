@@ -86,13 +86,13 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 91bee91657689f44abe5931eb6bf1656, type: 3}
     volume: 0.582
     pitch: 1
-    loop: 1
+    loop: 0
     source: {fileID: 0}
   - name: Checkpoint
     clip: {fileID: 8300000, guid: de8ab8e5159485645949d9e4122e1d54, type: 3}
     volume: 0.582
     pitch: 1
-    loop: 1
+    loop: 0
     source: {fileID: 0}
 --- !u!82 &5945364183254144319
 AudioSource:

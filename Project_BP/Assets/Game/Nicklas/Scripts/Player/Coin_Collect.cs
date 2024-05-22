@@ -5,6 +5,7 @@ using UnityEngine;
 public class Coin_Collect : MonoBehaviour
 {
     private CoinManager cm;
+    private bool isCollected;
 
     private void Start()
     {
@@ -13,15 +14,12 @@ public class Coin_Collect : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-       
-            if (other.gameObject.CompareTag("Coin"))
-            {
-               if (other.GetComponent<BoxCollider2D>() != null)
-               {
-                Destroy(other.gameObject);
-                cm.coinCount++;
-               }
-            }
-        
+        if(!isCollected && other.gameObject.CompareTag("Player"))
+        {
+            isCollected = true;
+            FindObjectOfType<AudioManager>().PlaySound("Quack");
+            cm.coinCount++;
+            Destroy(gameObject);
+        }   
     }
 }

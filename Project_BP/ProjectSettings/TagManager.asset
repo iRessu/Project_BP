@@ -20,7 +20,11 @@ TagManager:
   - "Gr\xE4s"
   - Ladder
   - MovingPlatform
+<<<<<<< HEAD
   - PickupCollider
+=======
+  - SimontestForeground
+>>>>>>> df1f56fc24ae77de97deb6ddc9f5368dba4c5d50
   - 
   - 
   - 
@@ -44,4 +48,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Foreground
+    uniqueID: 1284443379
+    locked: 0
+  - name: Background
+    uniqueID: 2609736295
     locked: 0

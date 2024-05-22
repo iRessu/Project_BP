@@ -59,12 +59,6 @@ MonoBehaviour:
     loop: 0
     source: {fileID: 0}
   - name: Jump
-    clip: {fileID: 8300000, guid: 51230d6acfb60c14ea96343a1d8aac55, type: 3}
-    volume: 1
-    pitch: 1
-    loop: 0
-    source: {fileID: 0}
-  - name: Jump
     clip: {fileID: 8300000, guid: 5b9922f60b80f234f9ab146a1554d8e7, type: 3}
     volume: 1
     pitch: 1

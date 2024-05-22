@@ -7,6 +7,7 @@ TagManager:
   - Backpack
   - CheckPoint
   - Coin
+  - PlatformCollider
   layers:
   - Default
   - TransparentFX
@@ -19,7 +20,7 @@ TagManager:
   - "Gr\xE4s"
   - Ladder
   - MovingPlatform
-  - 
+  - PickupCollider
   - 
   - 
   - 

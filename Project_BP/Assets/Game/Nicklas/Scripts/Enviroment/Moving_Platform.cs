@@ -15,12 +15,17 @@ public class Moving_Platform : MonoBehaviour
     private int _currentWaypointIndex = 0;
     private Transform _targetWaypoint;
     public bool isMoving;
+
+    private Vector3 _previousPosition;
+    private Vector3 _movementDelta;
+    private bool _playerOnPlatform;
    
 
     // Start is called before the first frame update
     void Start()
     {
         _targetWaypoint = _waypoints[0];
+        _previousPosition = transform.position;
     }
 
     // Update is called once per frame
@@ -33,12 +38,28 @@ public class Moving_Platform : MonoBehaviour
                    _targetWaypoint.position,
                    _speed * Time.deltaTime);
         }
+
+        _movementDelta = transform.position - _previousPosition;
+        _previousPosition = transform.position;
    
 
         if(Vector2.Distance(transform.position, _targetWaypoint.position) < _checkDistance)
         {
             _currentWaypointIndex =(_currentWaypointIndex +1) % _waypoints.Length;
             _targetWaypoint= _waypoints[_currentWaypointIndex];
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        if(_playerOnPlatform)
+        {
+            var playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+            
+            if(playerController != null)
+            {
+                playerController.transform.position += _movementDelta;
+            }
         }
     }
 
@@ -66,10 +87,9 @@ public class Moving_Platform : MonoBehaviour
         
         if(other.gameObject.layer == LayerMask.NameToLayer("MovingPlatform"))
         {
-            var playerMovement = other.collider.GetComponent<PlayerController>();
-            if (playerMovement != null && other.collider.CompareTag("Player"))
+            if(other.collider.CompareTag("Player"))
             {
-                playerMovement.SetParent(transform);
+                _playerOnPlatform = true;
             }
         }
        
@@ -85,12 +105,11 @@ public class Moving_Platform : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D other)
     {
-        if (other.GetType().ToString().Equals("UnityEngine.CapsuleCollider2D") && other.gameObject.layer == LayerMask.NameToLayer("MovingPlatform"))
+        if (other.gameObject.layer == LayerMask.NameToLayer("MovingPlatform"))
         {
-            var playerMovement = other.collider.GetComponent<PlayerController>();
-            if (playerMovement != null && other.collider.CompareTag("Player"))
+            if(other.collider.CompareTag("Player"))
             {
-                playerMovement.ResetParent();
+                _playerOnPlatform = false;
             }
         }
        

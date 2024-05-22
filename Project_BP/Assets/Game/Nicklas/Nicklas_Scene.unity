@@ -5578,7 +5578,7 @@ GameObject:
   - component: {fileID: 5135046693727989801}
   - component: {fileID: 5135046693727989802}
   - component: {fileID: 5135046693727989781}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Platform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5635,6 +5635,30 @@ PrefabInstance:
     - target: {fileID: 5945364183254144316, guid: 478eed5518050c64f96b0b90721778ae, type: 3}
       propertyPath: m_Name
       value: AudioManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 5945364183254144317, guid: 478eed5518050c64f96b0b90721778ae, type: 3}
+      propertyPath: sounds.Array.size
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5945364183254144317, guid: 478eed5518050c64f96b0b90721778ae, type: 3}
+      propertyPath: sounds.Array.data[7].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 91bee91657689f44abe5931eb6bf1656, type: 3}
+    - target: {fileID: 5945364183254144317, guid: 478eed5518050c64f96b0b90721778ae, type: 3}
+      propertyPath: sounds.Array.data[7].loop
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5945364183254144317, guid: 478eed5518050c64f96b0b90721778ae, type: 3}
+      propertyPath: sounds.Array.data[7].name
+      value: Quack
+      objectReference: {fileID: 0}
+    - target: {fileID: 5945364183254144317, guid: 478eed5518050c64f96b0b90721778ae, type: 3}
+      propertyPath: sounds.Array.data[7].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5945364183254144317, guid: 478eed5518050c64f96b0b90721778ae, type: 3}
+      propertyPath: sounds.Array.data[7].volume
+      value: 0.582
       objectReference: {fileID: 0}
     - target: {fileID: 5945364183254144318, guid: 478eed5518050c64f96b0b90721778ae, type: 3}
       propertyPath: m_RootOrder
@@ -5704,6 +5728,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1615267994142645523, guid: 2ac70fdbc99c8e14180dec8a2eaecd68, type: 3}
+      propertyPath: m_TagString
+      value: PlatformCollider
+      objectReference: {fileID: 0}
     - target: {fileID: 1740869168832874247, guid: 2ac70fdbc99c8e14180dec8a2eaecd68, type: 3}
       propertyPath: m_Size.y
       value: 1.6500001
@@ -5759,6 +5787,10 @@ PrefabInstance:
     - target: {fileID: 1740869168832874255, guid: 2ac70fdbc99c8e14180dec8a2eaecd68, type: 3}
       propertyPath: m_Name
       value: Player_Improved_Better
+      objectReference: {fileID: 0}
+    - target: {fileID: 1740869168832874270, guid: 2ac70fdbc99c8e14180dec8a2eaecd68, type: 3}
+      propertyPath: _drawGizmos
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1740869168832874271, guid: 2ac70fdbc99c8e14180dec8a2eaecd68, type: 3}
       propertyPath: m_Size.y

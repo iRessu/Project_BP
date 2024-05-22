@@ -18,6 +18,7 @@ public class Checkpoint_Script : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Player"))
         {
+            FindObjectOfType<AudioManager>().PlaySound("Checkpoint");
             respawn.respawnPoint = this.gameObject;
             coll.enabled = false;
         }

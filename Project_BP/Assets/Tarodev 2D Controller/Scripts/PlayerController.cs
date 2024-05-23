@@ -85,9 +85,13 @@ namespace TarodevController
 
             SetupCharacter();
             _anim = GetComponent<Animator>();
-            _originalParent = transform.parent;
 
             PhysicsSimulator.Instance.AddPlayer(this);
+        }
+        private void Start()
+        {
+            _originalParent = transform.parent;
+            _rb.interpolation = RigidbodyInterpolation2D.Interpolate;
         }
 
         private void OnDestroy() => PhysicsSimulator.Instance.RemovePlayer(this);

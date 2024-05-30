@@ -60,4 +60,13 @@ public class AudioManager : MonoBehaviour
         }
         s.source.Play();
     }
+
+    public void ShutUpEggBen()
+    {
+        Sound eggBen = Array.Find(sounds, sound => sound.name == "EggBen");
+        if(eggBen != null && eggBen.source.isPlaying)
+        {
+            eggBen.source.Stop();
+        }
+    }
 }

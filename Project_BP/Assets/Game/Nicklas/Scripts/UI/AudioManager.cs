@@ -1,6 +1,7 @@
 using UnityEngine.Audio;
 using System;
 using UnityEngine;
+using System.Collections;
 
 public class AudioManager : MonoBehaviour
 {
@@ -25,6 +26,7 @@ public class AudioManager : MonoBehaviour
             s.source.clip = s.clip;
 
             s.source.volume = s.volume;
+            s.originalVolume = s.volume;
             s.source.pitch = s.pitch;
             s.source.loop = s.loop;
         }
@@ -68,5 +70,30 @@ public class AudioManager : MonoBehaviour
         {
             eggBen.source.Stop();
         }
+    }
+
+    public void StopMenuMusic()
+    {
+        Sound menuMusic = Array.Find(sounds, sound => sound.name == "MenuMusic");
+        if(menuMusic != null && menuMusic.source.isPlaying)
+        {
+            StartCoroutine(FadeOut(menuMusic, 1f));
+        }
+    }
+
+    private IEnumerator FadeOut(Sound sound, float fadeTime)
+    {
+        AudioSource audioSource = sound.source;
+        float startVolume = sound.originalVolume;
+
+        while (audioSource.volume > 0)
+        {
+            audioSource.volume -= startVolume * Time.deltaTime / fadeTime;
+
+            yield return null;
+        }
+
+        audioSource.Stop();
+        audioSource.volume = startVolume;
     }
 }

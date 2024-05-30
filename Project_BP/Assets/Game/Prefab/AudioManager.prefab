@@ -94,6 +94,12 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
+  - name: Aj
+    clip: {fileID: 8300000, guid: 1a65ba457dbc59c448d18d39ea1d997b, type: 3}
+    volume: 0.582
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
 --- !u!82 &5945364183254144319
 AudioSource:
   m_ObjectHideFlags: 0

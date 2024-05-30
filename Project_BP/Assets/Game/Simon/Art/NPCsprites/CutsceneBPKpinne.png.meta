@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 58993b0e1d7dfc949907f6caca2c62be
+guid: 46d46f002a8b48342a7ff98d965ca8a7
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -42,7 +42,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -103,91 +103,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: BPK-MainCharacter-Run-SpriteSheet-Prototype_0
-      rect:
-        serializedVersion: 2
-        x: 3
-        y: 3
-        width: 19
-        height: 34
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 97fab8f5154e42b41b07f3ecd2849c4f
-      internalID: -12075396
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: BPK-MainCharacter-Run-SpriteSheet-Prototype_1
-      rect:
-        serializedVersion: 2
-        x: 35
-        y: 4
-        width: 21
-        height: 33
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 764412636d29fe44987c0b6cfcd4518b
-      internalID: 2111131215
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: BPK-MainCharacter-Run-SpriteSheet-Prototype_2
-      rect:
-        serializedVersion: 2
-        x: 67
-        y: 3
-        width: 19
-        height: 34
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e5ea208a9fefd594694951bc6ecea0a3
-      internalID: 2056662919
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: BPK-MainCharacter-Run-SpriteSheet-Prototype_3
-      rect:
-        serializedVersion: 2
-        x: 99
-        y: 4
-        width: 24
-        height: 33
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: bb58d3ed0d72ce846b04a70fdc3dfba2
-      internalID: 537963292
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     physicsShape: []
     bones: []
@@ -198,11 +114,7 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      BPK-MainCharacter-Run-SpriteSheet-Prototype_3: 537963292
-      BPK-MainCharacter-Run-SpriteSheet-Prototype_1: 2111131215
-      BPK-MainCharacter-Run-SpriteSheet-Prototype_2: 2056662919
-      BPK-MainCharacter-Run-SpriteSheet-Prototype_0: -12075396
+    nameFileIdTable: {}
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

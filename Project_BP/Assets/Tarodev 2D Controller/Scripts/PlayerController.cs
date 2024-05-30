@@ -351,7 +351,7 @@ namespace TarodevController
                     _collider.size = _character.CrouchColliderSize;
                     _collider.offset = _character.CrouchingColliderCenter;
                     break;
-                case ColliderMode.Airborne:
+               case ColliderMode.Airborne:
                     break;
             }
         }

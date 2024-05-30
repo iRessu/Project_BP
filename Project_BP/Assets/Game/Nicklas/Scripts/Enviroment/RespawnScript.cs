@@ -23,6 +23,7 @@ public class RespawnScript : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Player"))
         {
+            FindObjectOfType<AudioManager>().PlaySound("Aj");
             player.transform.position = respawnPoint.transform.position;
         }
     }
